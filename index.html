@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="./styles/styles.css"> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+
+
+        *{
+            box-sizing:border-box;
+            font-family: Roboto, Arial, Helvetica, sans-serif;
+            color: whitesmoke
+        }
+
+        body{
+            margin: 0px;
+            padding: 0px;
+            display: flex;
+            min-height: 100vh;
+            background-color: #252525;
+            overflow: hidden;
+        }
+
+        .inactive{
+            transition-duration: 400ms;
+            min-height: 100vh;
+            min-width: 100vw;
+            padding: 2vw 2vh;
+            background-color: #3c415c;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+        .text{
+            /* height: 50vw;
+            width: 50vh; */
+        }
+
+        .active{
+            transform-origin: left;
+            /* transform: scale(0.7, 0.5); */
+            transform: rotate(-25deg);
+        }
+
+        .circle{
+            cursor: pointer;
+            position: fixed;
+            height: 25vh;
+            width: 25vh;
+            background-color: #202020;
+            position: absolute;
+            border-radius: 50%;
+            transform: translate(-12.5vh, -12.5vh);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1;
+            transition-duration: 500ms;
+        }
+
+        .circle:hover{
+            box-shadow: 5px 10px 25px #191919;
+        }
+
+        .line{
+            margin: 5vh;
+            /* cursor: pointer; */
+            display: flex;
+            height: 0.6vh;
+            width: 3vh;
+            margin: 0.3vh;
+            background-color: white;
+            align-self: flex-end;
+            transition-duration: 400ms;
+        }
+
+        .container{
+            height: 10vh;
+            width: 10vh;
+            transform: translate(8vh, 8vh);
+        }
+
+        .menu{
+            list-style-type: none;
+            color: #b4a5a5;
+            position: absolute;
+            transform: translate(-6vh, 80vh);
+            z-index: 0;
+        }
+
+        .xaxis{
+            transform-origin: left;
+            transform: rotate(35deg);
+            
+        }
+
+        .yaxis{
+            transform-origin:left;
+            transform: rotate(-35deg);
+            
+        }
+
+        .hidden{
+            opacity: 0;
+        }
+
+        a{
+            cursor: pointer;
+            text-decoration: none;
+            letter-spacing: 3px;
+            padding: 5px;
+            margin: 5px;
+            transition-duration: 500ms;
+        }
+
+        a:hover{
+            letter-spacing: 5px;
+            margin: 5px;
+        }
+    </style>
+    <title>the page</title>
+</head>
+<body>
+    <ul class="menu">
+        <li><a href="#">home</a></li>
+        <li><a href="#">about</a></li>
+        <li><a href="">contact</a></li>
+    </ul>
+    <div class="inactive">
+        <div class="text">
+            <p>this is just a very strange page</p>
+        </div>
+       
+    </div>
+    <div class="circle">
+        <div class="container">
+            <div class="line first"></div>
+            <div class="line middle"></div>
+            <div class="line bottom"></div>
+        </div>
+    </div>
+    <script>
+        
+        let dob = document.querySelector('.inactive')
+        let first = document.querySelector('.first')
+        let second = document.querySelector('.middle')
+        let third = document.querySelector('.bottom')
+        let links = document.querySelectorAll('a')
+        let circle = document.querySelector('.circle')
+
+
+        function burgerRotate(){
+            console.log('working')
+            first.classList.toggle('xaxis')
+            second.classList.toggle('hidden')
+            third.classList.toggle('yaxis')
+        }
+
+        circle.addEventListener('click', function(){
+            dob.classList.toggle('active')
+            burgerRotate()
+            })
+    </script>
+</body>
+</html>
